@@ -2,11 +2,9 @@ package mendelsland2;
 
 public class Schmetterling {
 
-    static Musterung musterung;
-    static Fluegelfarbe fluegelfarbe;
-    static Fuehlerform fuehlerform;
-    static Schmetterling mutter;
-    static Schmetterling vater;
+    Musterung musterung;
+    Fluegelfarbe fluegelfarbe;
+    Fuehlerform fuehlerform;
    
 
     public Schmetterling(Musterung musterung, Fluegelfarbe fluegelfarbe, Fuehlerform fuehlerform) {
@@ -25,83 +23,27 @@ public class Schmetterling {
         return fuehlerform;
     }
 
-    public static void erstelleEltern() {
+    public static Schmetterling erstelleVater() {
 
-        erstelleMutter();
-        erstelleVater();
+        Schmetterling vater = new Schmetterling(null, null, null);
+
+        vater.musterung = Musterung.SCHWARZESTREIFEN;
+        vater.fluegelfarbe = Fluegelfarbe.GELB;
+        vater.fuehlerform = Fuehlerform.GEKRUEMMT;
+
+        return vater;
     }
 
     public static Schmetterling erstelleMutter() {
 
-        mutter = new Schmetterling(null, null, null);
+        Schmetterling mutter = new Schmetterling(null, null, null);
 
-         UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie das gewünschte Muster der Mutter an", "kein Muster", "schwarze Punkte", "schwarze Streifen");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.musterung = Musterung.KEINMUSTER;
-        } else if (UserInterface.givenChoice == 1) {
-            Schmetterling.musterung = Musterung.SCHWARZEPUNKTE;
-        } else {
-            Schmetterling.musterung = Musterung.SCHWARZESTREIFEN;
-        }
-
-        UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie die gewünschte Flügelfarbe der Mutter an", "rot", "gelb", "grün", "blau");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.ROT;
-        } else if (UserInterface.givenChoice == 1) {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.GELB;
-        } else if (UserInterface.givenChoice == 2){
-            Schmetterling.fluegelfarbe = Fluegelfarbe.GRUEN;
-        } else {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.BLAU;
-        }
-
-        UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie die gewünschte Fühlerform der Mutter an", "gerade", "gekrümmt");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.fuehlerform = Fuehlerform.GERADE;
-        } else {
-            Schmetterling.fuehlerform = Fuehlerform.GEKRUEMMT;
-        } 
+        mutter.musterung = Musterung.SCHWARZEPUNKTE;
+        mutter.fluegelfarbe = Fluegelfarbe.BLAU;
+        mutter.fuehlerform = Fuehlerform.GERADE;
 
         return mutter;
     }
 
-    public static Schmetterling erstelleVater() {
-
-        vater = new Schmetterling(null,  null, null);
-
-        UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie das gewünschte Muster des Vaters an", "kein Muster", "schwarze Punkte", "schwarze Streifen");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.musterung = Musterung.KEINMUSTER;
-        } else if (UserInterface.givenChoice == 1) {
-            Schmetterling.musterung = Musterung.SCHWARZEPUNKTE;
-        } else {
-            Schmetterling.musterung = Musterung.SCHWARZESTREIFEN;
-        }
-
-        UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie die gewünschte Flügelfarbe des Vaters an", "rot", "gelb", "grün", "blau");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.ROT;
-        } else if (UserInterface.givenChoice == 1) {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.GELB;
-        } else if (UserInterface.givenChoice == 2){
-            Schmetterling.fluegelfarbe = Fluegelfarbe.GRUEN;
-        } else {
-            Schmetterling.fluegelfarbe = Fluegelfarbe.BLAU;
-        }
-
-        UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie die gewünschte Fühlerform des Vaters an", "gerade", "gekrümmt");
-
-        if (UserInterface.givenChoice == 0) {
-            Schmetterling.fuehlerform = Fuehlerform.GERADE;
-        } else {
-            Schmetterling.fuehlerform = Fuehlerform.GEKRUEMMT;
-        } 
-
-        return vater;
-    }
+    
 }

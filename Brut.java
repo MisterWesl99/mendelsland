@@ -1,48 +1,51 @@
 package mendelsland2;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.random.*;
 
 public class Brut {
 
-    static ArrayList<Schmetterling> brut = new ArrayList<>();
-    
     static int brutgroesse;
+
+    static ArrayList<Schmetterling> brut = new ArrayList<>();
 
     public static List<Schmetterling> paarung() {
 
-        brutgroesse = (int) (Math.random() * 1001)+1000;
+
+        
+        Schmetterling mutter = Schmetterling.erstelleVater();
+        Schmetterling vater = Schmetterling.erstelleVater();
+
+        Schmetterling kind = new Schmetterling(null, null, null);
 
         for (int i = 0; i < (brutgroesse); i++) {
 
-            Schmetterling kind = new Schmetterling(null, null, null);
-
-            int a = (int)(Math.random()*1)+1;
+            int a = (Math.random() <= 0.5) ? 1 : 2;
             if (a == 1) {
-                Schmetterling.musterung = Schmetterling.vater.getMusterung();
+                kind.musterung = vater.getMusterung();
             } else {
-                Schmetterling.musterung = Schmetterling.mutter.getMusterung();
+                kind.musterung = mutter.getMusterung();
             }
 
-            int b = (int)(Math.random()*1)+1;
+            int b = (Math.random() <= 0.5) ? 1 : 2;
             if (b == 1) {
-                Schmetterling.fluegelfarbe = Schmetterling.vater.getFluegelfarbe();
+                kind.fluegelfarbe = mutter.getFluegelfarbe();
+                
             } else {
-                Schmetterling.fluegelfarbe = Schmetterling.mutter.getFluegelfarbe();
+                kind.fluegelfarbe = vater.getFluegelfarbe();
+                
             }
 
-            int c = (int)(Math.random()*1)+1;
+            int c = (Math.random() <= 0.5) ? 1 : 2;
             if (c == 1) {
-                Schmetterling.fuehlerform = Schmetterling.vater.getFuehlerform();
+                kind.fuehlerform = vater.getFuehlerform();
             } else {
-                Schmetterling.fuehlerform = Schmetterling.mutter.getFuehlerform();
+                kind.fuehlerform = mutter.getFuehlerform();
             }
 
             brut.add(kind);
-
         }
 
         return brut;
+
     }
 }

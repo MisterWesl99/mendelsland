@@ -4,13 +4,15 @@ import java.util.*;
 
 public class Schmetterlingskunstler {
 
+    static ArrayList<Schmetterling> fang;
+
     public static List<Schmetterling> einfangen() {
 
         Fuehlerform fuehler;
         Musterung muster;
         Fluegelfarbe fluegel;
 
-        ArrayList<Schmetterling> fang = new ArrayList<>();
+        fang = new ArrayList<>();
 
         UserInterface.givenChoice = UserInterface.requestChoice("Bitte geben Sie die gewünschte Merkmalart an", "Musterung", "Flügelfarbe", "Fühlerform");
 
@@ -54,7 +56,7 @@ public class Schmetterlingskunstler {
 
             for (int i = 0; i < Brut.brutgroesse; i++) {
 
-                if (fluegel == Brut.brut.get(i).getFluegelfarbe()){
+                if (Brut.brut.get(i).getFluegelfarbe() == fluegel){
                     fang.add(Brut.brut.get(i));
                 }
             }
@@ -70,7 +72,7 @@ public class Schmetterlingskunstler {
             }
             for (int i = 0; i < Brut.brutgroesse; i++) {
 
-                if (fuehler == Brut.brut.get(i).getFuehlerform()){
+                if (Brut.brut.get(i).getFuehlerform() == fuehler){
                     fang.add(Brut.brut.get(i));
                 }
             }
